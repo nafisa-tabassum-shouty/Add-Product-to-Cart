@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Bonus_assignment.Models.item>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/user.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/stackpath.bootstrapcdn.com_bootstrap_4.5.2_css_bootstrap.min.css")">
+</head>
+<body>
+    <div class="container">
+        
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm" style="background-color: #82B84A;">
+                        <img class="card-img-top" src="@Url.Content(item.image_url)" style="width:80%;height:0%;" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Names)</h5>
+                            <p class="card-text"><strong>Price:</strong> @Html.DisplayFor(modelItem => item.price)</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.item_id }, new { @class = "btn btn-sm btn-outline-secondary" })
+                                    @Html.ActionLink("Details", "Details", new { id = item.item_id }, new { @class = "btn btn-sm btn-outline-secondary" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.item_id }, new { @class = "btn btn-sm btn-outline-secondary" })
+                                    @Html.ActionLink("Order", "SetItemId", "Orders", new { itemId = item.item_id }, new { @class = "btn btn-sm btn-outline-primary" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="@Url.Content("~/Content/code.jquery.com_jquery-3.5.1.slim.min.js")"></script>
+    <script src="@Url.Content("~/Content/popper.min.js")"></script>
+    <script src="@Url.Content("~/Content/stackpath.bootstrapcdn.com_bootstrap_4.5.2_js_bootstrap.min.js")"></script>
+</body>
+</html>

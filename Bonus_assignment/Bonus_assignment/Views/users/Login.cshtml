@@ -1,0 +1,137 @@
+﻿@model Bonus_assignment.Models.user
+
+@{
+    ViewBag.Title = "Student Login";
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        footer {
+            color: white;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .Background-clip {
+            position: absolute;
+            width: 100%;
+            height: fit-content;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .containerform {
+            margin-top: 4%;
+            max-width: 70%;
+            height: 400px;
+            margin-top: 10%;
+            background: linear-gradient(135deg,rgba(255,255,255,0.1));
+            backdrop-filter: blur(20px);
+            margin-left: 15%;
+        }
+
+        .col-7 {
+            position: absolute;
+            margin-top: -3%;
+            height: 550px;
+            margin-left: 45%;
+            width: 550px;
+            color: white;
+            border: none;
+        }
+
+        .image-container {
+            transition: transform .2s;
+        }
+
+            .image-container:hover {
+                transform: scale(1.05);
+            }
+
+        .form-group {
+            margin-left: 2rem;
+            transition: transform .2s;
+        }
+
+            .form-group:hover {
+                transform: scale(1.2);
+            }
+    </style>
+</head>
+<body style="background-color: #CBD839;">
+    <div class="fullbody">
+       
+
+        <div class="containerform" style="border-radius:10%">
+            <hr />
+            <div class="row" style="height: 600px;border-radius:20px">
+                <div class="col">
+
+                    <div class="image-container" style="padding:50px;margin:0px;">
+                        <img src="~/Image/R.jpg" alt="..." style="height: 300px; border-radius: 5%; ">
+
+                    </div>
+                </div>
+                <div class="col" >
+
+
+
+                    <form method="post" style="padding-top:130px;justify-content:center;">
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="username" placeholder="Username">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+
+                            <div class="col-sm-10">
+                                <input type="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group2">
+                            <div class="row justify-content ">
+                                <div class="col-md-6" style="padding:15px;margin-left:20%;">
+                                    <hr style="padding:15px;margin-left:-45%;" />
+                                    <div class="form-group">
+                                        <input type="submit" value="Login" class="btn btn-primary" style="width: 120px; margin-left: -10%;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    @if (@ViewBag.Log != null)
+    {
+        <p>@ViewBag.Log</p>
+    }
+    <script src="~/bundles/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+</html>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Bonus_assignment.Models.order>
+@using Bonus_assignment.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/user.cshtml";
+    productEntities db = new productEntities();
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="container">
+    @foreach (var order in Model)
+    {
+        var item = db.items.FirstOrDefault(i => i.item_id == order.item_id); // Fetch the related item
+
+        <div class="row mb-4">
+            <div class="card w-100 shadow-sm">
+                <div class="row no-gutters">
+                    <div class="col-md-3">
+                        <img class="card-img" src="@Url.Content(item?.image_url)" alt="Product image">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Names</h5>
+                            <p class="card-text"><strong>Quantity:</strong> @order.quantity</p>
+                            <p class="card-text"><strong>Price:</strong> @item.price</p>
+                            <p class="card-text"><strong>Total Price:</strong> @(order.quantity * (item?.price ?? 0))</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-center">
+                        <div class="btn-group-vertical w-100 p-3">
+                            @Html.ActionLink("Edit", "Edit", new { id = order.order_id }, new { @class = "btn btn-sm btn-outline-secondary mb-2" })
+                            @Html.ActionLink("Delete", "Delete", new { id = order.order_id }, new { @class = "btn btn-sm btn-outline-secondary mb-2" })
+                            @Html.ActionLink("Details", "Details", new { id = order.order_id }, new { @class = "btn btn-sm btn-outline-secondary mb-2" })
+                            @Html.ActionLink("Add Quantity", "AddQuantity", new { id = order.order_id }, new { @class = "btn btn-sm btn-outline-primary mb-2" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script src="~/Content/code.jquery.com_jquery-3.5.1.slim.min.js"></script>
+<script src="~/Content/popper.min.js"></script>
+<script src="~/Content/stackpath.bootstrapcdn.com_bootstrap_4.5.2_js_bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="~/Content/stackpath.bootstrapcdn.com_bootstrap_4.5.2_css_bootstrap.min.css">
